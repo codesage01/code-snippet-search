@@ -1,0 +1,17 @@
+{
+    "name": "code-snippet-search",
+    "version": "1.0.0",
+    "description": "Full-stack code snippet search with Grok AI",
+    "private": true,
+    "scripts": {
+        "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+        "seed": "cd backend && npm run seed",
+        "backend": "cd backend && npm run dev",
+        "frontend": "cd frontend && npm run dev",
+        "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+        "test": "cd backend && npm test"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
+}
