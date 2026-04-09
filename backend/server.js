@@ -35,13 +35,15 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-let server;
-if (require.main === module) {
-    connectDB().then(() => {
-        server = app.listen(PORT, () => {
-            console.log(`🚀 Server running on http://localhost:${PORT}`);
-        });
+// Connect to Database and Start Server
+connectDB().then(() => {
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`🚀 Backend active on port ${PORT}`);
     });
-}
+}).catch(err => {
+    console.error('Failed to connect to DB:', err);
+    process.exit(1);
+});
 
-module.exports = { app };
+// Export the app for Vercel's internal use
+module.exports = app;
